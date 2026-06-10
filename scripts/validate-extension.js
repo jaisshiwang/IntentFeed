@@ -1,0 +1,11 @@
+const fs = require("node:fs");
+const path = require("node:path");
+const vm = require("node:vm");
+const root = path.resolve(__dirname, "..");
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
+const referenced = [manifest.background.service_worker, manifest.options_page, ...manifest.content_scripts.flatMap((entry) => [...entry.js, ...entry.css])];
+const missing = referenced.filter((file) => !fs.existsSync(path.join(root, file)));
+if (manifest.manifest_version !== 3) throw new Error("Manifest must use version 3");
+if (missing.length) throw new Error(`Missing manifest files: ${missing.join(", ")}`);
+for (const file of referenced.filter((file) => file.endsWith(".js"))) new vm.Script(fs.readFileSync(path.join(root, file), "utf8"), { filename: file });
+console.log(`Validated Manifest V3 and ${referenced.length} referenced extension files.`);
