@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "IntentFeed",
+  "version": "0.1.0",
+  "description": "Redirect YouTube doomscrolling into goal-aligned content.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "options_page": "src/options/options.html",
+  "action": {
+    "default_title": "Open IntentFeed settings"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/shared/core.js", "src/content/youtube.js"],
+      "css": ["src/content/youtube.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IntentFeed settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#">IntentFeed<span></span></a><p>Make your feed match your intentions.</p></header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">Daily schedule</p><h1>Plan what your attention is for.</h1><p>During these time blocks, IntentFeed replaces YouTube’s homepage recommendations with your chosen next steps.</p></div>
+      <button id="add-block" class="primary">+ Add time block</button>
+    </section>
+    <section class="stats" aria-label="IntentFeed analytics">
+      <article><strong id="stat-shown">0</strong><span>Interventions shown</span></article>
+      <article><strong id="stat-started">0</strong><span>10-min sessions started</span></article>
+      <article><strong id="stat-ignored">0</strong><span>Ignored for now</span></article>
+    </section>
+    <section class="schedule-section">
+      <div class="section-heading"><div><p class="eyebrow">Focus blocks</p><h2>Your recurring day</h2></div><p>Blocks repeat every day using your local time.</p></div>
+      <form id="schedule-form"><div id="blocks"></div><div class="form-footer"><span id="status" role="status"></span><button type="submit" class="primary">Save schedule</button></div></form>
+    </section>
+  </main>
+  <template id="block-template">
+    <article class="block-card">
+      <div class="block-number"></div>
+      <div class="block-fields">
+        <div class="time-row"><label>Starts<input name="start" type="time" required></label><span>to</span><label>Ends<input name="end" type="time" required></label><button type="button" class="remove" title="Remove block" aria-label="Remove block">×</button></div>
+        <label>Intended activity<input name="activity" type="text" maxlength="120" required placeholder="e.g. Write the project proposal"></label>
+        <label>Motivation keywords<input name="keywords" type="text" placeholder="focus, consistency, creative work"><small>Separate keywords with commas.</small></label>
+        <fieldset><legend>Suggested links</legend><div class="links"></div></fieldset>
+      </div>
+    </article>
+  </template>
+  <script src="../shared/core.js"></script><script src="options.js"></script>
+</body>
+</html>

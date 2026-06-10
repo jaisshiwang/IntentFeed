@@ -1,0 +1,14 @@
+[
+  {
+    "id": "morning-learning",
+    "start": "09:00",
+    "end": "11:00",
+    "activity": "Learn one practical JavaScript concept",
+    "keywords": ["javascript", "focus", "web development"],
+    "links": [
+      { "title": "JavaScript.info: read one chapter", "url": "https://javascript.info/" },
+      { "title": "MDN JavaScript guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" },
+      { "title": "Search YouTube with intention", "url": "https://www.youtube.com/results?search_query=javascript+tutorial" }
+    ]
+  }
+]
